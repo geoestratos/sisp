@@ -3,7 +3,7 @@ from django.db import models
 
 
 
-class BaseModel (models.Models):
+class BaseModel (models.Model):
     ''' Base models acts as an abstract base class from wich every other models in the project. 
     This class provide the following attributes
     + created (DateTime)
@@ -26,13 +26,13 @@ class BaseModel (models.Models):
         get_latest_by= 'created'
         ordering= ['-created', 'modified']
 
-class BaseMecStatus (models.Models):
+class BaseMecStatus (models.Model):
     '''This base models acts as an abstract base class from Mechanic Status submodules'''
     startMd = models.FloatField(max_length=10)
     startTvd = models.FloatField(max_length=10)
     endMd = models.FloatField(max_length=10)
     endTvd = models.FloatField(max_length=10)
-    programType = models.CharField('Type of program', max_length=4, choices=(('plan'), ('real')), default='plan')
+    programType = models.CharField('Type of program', max_length=4, choices=(('plan', 'plan'), ('real', 'real')), default='plan')
 
     class Meta:
         """Meta option"""
