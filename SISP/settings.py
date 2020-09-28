@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'rest_framework'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'SISP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'sisp',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'randy',
-        'PASSWORD': 'regd9070'
+        'NAME': 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
+        #'USER': 'randy',
+        #'PASSWORD': 'regd9070'
     }
 }
 
@@ -126,3 +126,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Django rest framework configuration
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSIONS_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}

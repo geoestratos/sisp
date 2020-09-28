@@ -14,6 +14,9 @@ class MecStatus(BaseModel, models.Model):
     '''Module from the principal app.'''
     well = models.ForeignKey(   Well, on_delete=CASCADE)
 
+    def __str__(self):
+        return self.well.name
+
 
 class GeoColumn(BaseModel, BaseMecStatus, models.Model):
     ''' Submodule from Mechanic status, this represent the Geological column chart'''
@@ -37,6 +40,8 @@ class GeoColumn(BaseModel, BaseMecStatus, models.Model):
     mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE)
     layer = models.CharField('GeologicalLayer', max_length=7, choices=LAYERS_CHOICES, default='T.A')
     
+    def __str__(self):
+        return self.layer
 
 PIPE_CHOICES = (
     ('20', '20'),
@@ -58,3 +63,6 @@ class TRstate(BaseModel, BaseMecStatus, models.Model):
     mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE)
     pipeDiameter = models.CharField(max_length=7, choices=PIPE_CHOICES, default='20')
     drillDiameter = models.CharField(max_length=7, choices=DRILL_CHOICES, default='26')
+
+    def __str__(self):
+        return self.pipeDiameter
