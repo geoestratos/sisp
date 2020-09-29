@@ -4,27 +4,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 #RestFramework
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from rest_framework import viewsets
+from rest_framework import permissions
 
 #SISP Utilities
 from .models import MecStatus, GeoColumn, TRstate
-from .serializers import  CreateGeoColumnSerializer, GeoColumnSerializer, TRStateSerializer
+from mecStatus.serializers import   GeoColumnSerializer, TRSerializer
 
-@api_view(['GET'])
-def list_geocolumn(request):
-    '''List a mechanic status values'''
-    geocolumns = GeoColumn.objects.all()
-    serializer = GeoColumnSerializer(geocolumns, many=True)
-    return Response(serializer.data)
+class GeoColumnViewset(viewsets.ModelViewSet):
+    queryset = GeoColumn.objects.all().order_by('-created')
+    serializer_class = GeoColumnSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-@api_view(['POST'])
-def create_geocolumn(request):
-    '''List a mechanic status values'''
-    serializer = CreateGeoColumnSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    geocolumn = serializer.save()
-
-    return Response(GeoColumnSerializer(geocolumn).data)
-
+class TRViewset(viewsets.ModelViewSet):
+    queryset = TRstate.objects.all().order_by('-created')
+    serializer_class = TRSerializer
+    permission_classes = [permissions.IsAuthenticated]
     
