@@ -11,17 +11,15 @@ from rest_framework import routers
 from mecStatus import views
 from . import views as vsisp
 
-router = routers.DefaultRouter()
-router.register(r'users', vsisp.UserViewSet)
-router.register(r'groups', vsisp.GroupViewSet)
 
 router = routers.DefaultRouter()
-router.register(r'geo_column', views.GeoColumnViewset)
-router.register(r'tr_state', views.TRViewset)
+router.register(r'mecstatus', views.MecStatusViewset)
+router.register(r'geocolumn', views.GeoColumnViewset)
+router.register(r'trstate', views.TRViewset)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
