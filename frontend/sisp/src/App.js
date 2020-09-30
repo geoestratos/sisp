@@ -4,12 +4,13 @@ import { Bar } from 'react-chartjs-2';
 import {newPipe} from './Pipe.js'
 import PipeChart from './components/PipeChart';
 import PipeForm from './components/PipeForm'
+import PrincipalNavbar from './components/Navbar'
 
 class App extends Component {
   render(){
     return(
       <div className="App">
-        <PipeChart height="100%" width="33vh" />
+        <PrincipalNavbar></PrincipalNavbar>
         <PipeForm></PipeForm>
       </div>
     )

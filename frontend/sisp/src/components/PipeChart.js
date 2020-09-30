@@ -1,39 +1,19 @@
 import React,  {Component} from 'react';
 import {Bar} from 'react-chartjs-2';
-import {PipeForm} from './PipeForm'
+
 
 class PipeChart extends Component{
     constructor(props){
-        super(props);
-        this.state = {
-            charData: {
-                labels: ['Programado'],
-                datasets:[]
-            }
-        }
+        super(props)
+        this.state = {chartData: props.chartData}
+        console.log(props)
     }
-    datasetsUpdate(){
-        this.state.charData.datasets.push(
-            {
-                label: 'Programado',
-                backgroundColor: [
-                    "#D03C3E",
-                    "#0066CC",
-                ],
-                barPercentage: .05,
-
-                stack: 'Stack 0',
-                data: [
-                    11,
-                ]
-        }
-        )
-    }
+    
     render(){
         return(
             <div className="chart">
                 <Bar 
-                    data={this.state.charData}
+                    data={this.props.chartData}
                     options={{
                         maintainAspectRatio: true
                     }}
@@ -43,5 +23,6 @@ class PipeChart extends Component{
         )
     }
 }
+
 
 export default PipeChart;
