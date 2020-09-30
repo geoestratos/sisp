@@ -1,32 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './assets/css/App.css';
 import { Bar } from 'react-chartjs-2';
 import {newPipe} from './Pipe.js'
+import PipeChart from './components/PipeChart';
+import PipeForm from './components/PipeForm'
 
-
-
-function App() {
-  
-
-  
-  var data={
-    labels: ['Programado', 'Real'],
-    datasets: [],
+class App extends Component {
+  render(){
+    return(
+      <div className="App">
+        <PipeChart height="100%" width="33vh" />
+        <PipeForm></PipeForm>
+      </div>
+    )
   }
-  data.datasets.push(newPipe)
-  
-  const options={
-     mantainAspectRatio: false,
-     responsive: true,
-    
-   }
-
-  return (
-    <div className="App" style={{width: '100%', heigth: '500px'}}>
-      <h2>Estado Mecanico</h2>
-      <Bar data={data} options={options}></Bar>
-    </div>
-  );
 }
 
 export default App;
