@@ -18,9 +18,14 @@ class MecStatus(BaseModel, models.Model):
         return self.well.name
 '''
     name = models.CharField('name', max_length=12, default=None)
+    
+    def __str__(self):
+        return self.name
+    
 
 class GeoColumn(BaseModel, BaseMecStatus, models.Model):
-    ''' Submodule from Mechanic status, this represent the Geological column chart'''
+    ''' Submodule from Mechanic status, this represent the 
+    Geological column chart'''
 
     LAYERS_CHOICES = (
     ('T.A','T.A'),
@@ -60,7 +65,8 @@ DRILL_CHOICES = (
 )
 
 class TRstate(BaseModel, BaseMecStatus, models.Model):
-    ''' Submodule from Mechanic status, this represent the Pipe lines chart'''
+    ''' Submodule from Mechanic status, this represent 
+    the Pipe lines chart'''
     mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE, related_name='trStates')
     pipeDiameter = models.CharField(max_length=7, choices=PIPE_CHOICES, default='20')
     drillDiameter = models.CharField(max_length=7, choices=DRILL_CHOICES, default='26')

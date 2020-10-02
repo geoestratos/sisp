@@ -2,24 +2,25 @@
 from mecStatus.models import MecStatus
 from rest_framework import serializers
 
+#SISP
 from mecStatus import models
-
+from SISP.serializers import BaseMecStatusSerializer , BaseModelSerializer
       
 
-class GeoColumnSerializer(serializers.HyperlinkedModelSerializer):
-
+class GeoColumnSerializer(serializers.ModelSerializer):
         class Meta:
                 model = models.GeoColumn
-                fields = ['layer', 'startMd', 'startTvd', 'endMd', 'endTvd', 'programType']
+                fields = '__all__'
 
-class TRSerializer (serializers.HyperlinkedModelSerializer):
+class TRSerializer (serializers.ModelSerializer):
         class Meta:
                 model = models.TRstate
-                fields = ['pipeDiameter', 'drillDiameter', 'startMd', 'startTvd', 'endMd', 'endTvd', 'programType']
+                fields = '__all__'
+        
 
-class MecStatusSerializer(serializers.HyperlinkedModelSerializer):
-        geoColumns = GeoColumnSerializer()
-        trStates = TRSerializer()
+class MecStatusSerializer(serializers.ModelSerializer):
+        geoColumns = GeoColumnSerializer(many=True)
+        trStates = TRSerializer(many=True)
         
         class Meta:
                 model = models.MecStatus

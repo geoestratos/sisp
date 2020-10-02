@@ -1,14 +1,16 @@
-from django.contrib.auth.models import User, Group
+#SISP
+from SISP.utils import models
+
+#Django Rest Framework
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class BaseModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
+        model = models.BaseModel
+        fields = ['created', 'modified']
 
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class BaseMecStatusSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = models.BaseMecStatus
+        fields = ['startMd', 'startTvd', 'endMd', 'endTvd', 'programType']
