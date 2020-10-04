@@ -1,4 +1,6 @@
 #Django REST Framework
+from django.db.models.expressions import OrderBy
+from rest_framework.fields import SerializerMethodField
 from mecStatus.models import MecStatus
 from rest_framework import serializers
 
@@ -19,12 +21,12 @@ class TRSerializer (serializers.ModelSerializer):
         
 
 class MecStatusSerializer(serializers.ModelSerializer):
-        geoColumns = GeoColumnSerializer(many=True)
+        geoColumns = SerializerMethodField()
         trStates = TRSerializer(many=True)
         
         class Meta:
                 model = models.MecStatus
-                fields = ['name', 'geoColumns', 'trStates']
+                fields = '__all__'
         
         def create (self, validated_data):
                 mecStatus = models.MecStatus(name=validated_data.get("name"))
@@ -39,3 +41,7 @@ class MecStatusSerializer(serializers.ModelSerializer):
                         models.TRstate.objects.create(mecStatus=mecStatus, **trState)
 
                 return validated_data
+
+        def get_geoColumns(self, instance):
+                geoColumns = instance.geoColumns.order_by('orderId')
+                return GeoColumnSerializer(geoColumns, many=True).data

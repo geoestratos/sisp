@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Row, Col, Form, Input, Label, Button, FormGroup} from 'reactstrap';
 import {CheckCircle, TrashFill} from 'react-bootstrap-icons';
-import DataConverter from './PipeData'
 
 
 class PipeForm extends Component {
@@ -31,17 +30,15 @@ class PipeForm extends Component {
 
     saveData(e){
         e.preventDefault();
-        let dataOk = true
+        
         
      }
 
     render(){
-        const data = this.state;
-        const dataOk = this.saveData.dataOk
+
         return (      
             <div>
                 <Row>                   
-                    <DataConverter data={data} save={dataOk}></DataConverter>
                     <Col xs="3"></Col>
                     <Col xs="6">
                         <h2>Actualizar grafica de estado mecánico</h2>

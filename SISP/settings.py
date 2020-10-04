@@ -37,9 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #API Rest
     'rest_framework',
+    'django_filters',
+
+    #SISP Apps
     'clusters',
     'mecStatus',
+
+    #Middleware
+    'corsheaders'
 ]
 
 
@@ -51,7 +59,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'SISP.urls'
 
@@ -111,13 +123,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+DATETIME_FORMAT = '%d-%m-%Y %H:%M'
+
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = False
 
-USE_L10N = True
+USE_L10N = False
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -134,7 +148,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSIONS_CLASSES': (
         'rest_framework.permissions.DjangoModel',
     ),
-    'DEFAULT_PAGINATION_CLASS': 
-        'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }

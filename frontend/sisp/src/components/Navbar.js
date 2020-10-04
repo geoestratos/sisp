@@ -1,15 +1,16 @@
 import React, {Component} from 'react'
-import {Navbar, NavItem, NavLink } from 'reactstrap'
+import {Navbar, NavItem, NavLink, Nav } from 'reactstrap'
 
 class PrincipalNavbar extends Component{
     render(){
         return(
             <Navbar color="primary" light expand="md" >
-                <NavItem>
-                    <NavLink>
-                        <a href="#">Estado mecanico</a>
-                    </NavLink>
-                </NavItem>
+                <Nav>
+                    <NavItem>
+                        <NavLink href="#">
+                        </NavLink>
+                    </NavItem>
+                </Nav>
             </Navbar>
         )
     }

@@ -32,7 +32,7 @@ class GeoColumn(BaseModel, BaseMecStatus, models.Model):
     ('RPLCN', 'RPLCN'),
     ('PLCNM', 'PLCNM'),
     ('PLCNS', 'PLCNS'),
-    ('PL', 'PL'),
+    ('PLCNI', 'PLCNI'),
     ('MS', 'MS'),
     ('YAC-8', 'YAC-8'),
     ('YAC-7', 'YAC-7'),

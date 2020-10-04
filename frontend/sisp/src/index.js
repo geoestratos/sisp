@@ -1,13 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/css/index.css';
 import  './assets/css/bootstrap.css'
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {Row, Container, Col} from 'reactstrap'
+
+//Components
+import PipeForm from './components/PipeForm';
+import Navbar from './components/Navbar'
+import Source from './components/Source'
+import PipeData from './components/PipeData'
+import PipeChart from './components/PipeChart'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    
+    <Navbar/>
+    <Container></Container>
+    <h1 className="display-4 ">Estado mecánico</h1>
+    <Row>
+      <Col xs="3"> 
+        <PipeChart className="col-3" module="mecstatus/" />
+      </Col>
+
+      <PipeForm/>
+      <Source well="trstate/"/>
+      
+    </Row>
   </React.StrictMode>,
   document.getElementById('root')
 );

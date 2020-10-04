@@ -28,6 +28,7 @@ class BaseModel (models.Model):
 
 class BaseMecStatus (models.Model):
     '''This base models acts as an abstract base class from Mechanic Status submodules'''
+    orderId = models.IntegerField(default=0)
     startMd = models.FloatField(max_length=10)
     startTvd = models.FloatField(max_length=10)
     endMd = models.FloatField(max_length=10)
