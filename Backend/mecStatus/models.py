@@ -43,7 +43,7 @@ class GeoColumn(BaseModel, BaseMecStatus, models.Model):
     ('YAC-2', 'YAC-2'),
     ('YAC-1', 'YAC-1'),
 )
-    mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE, related_name='geoColumns')
+    mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE, related_name='geoColumns', verbose_name='Geological Columns')
     layer = models.CharField('GeologicalLayer', max_length=7, choices=LAYERS_CHOICES, default='T.A')
     
     def __str__(self):
@@ -67,9 +67,10 @@ DRILL_CHOICES = (
 class TRstate(BaseModel, BaseMecStatus, models.Model):
     ''' Submodule from Mechanic status, this represent 
     the Pipe lines chart'''
-    mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE, related_name='trStates')
+    mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE, related_name='trStates', verbose_name='TR Status')
     pipeDiameter = models.CharField(max_length=7, choices=PIPE_CHOICES, default='20')
     drillDiameter = models.CharField(max_length=7, choices=DRILL_CHOICES, default='26')
+    isConnection = models.BooleanField('Is Connection', default=False)
 
     def __str__(self):
         return self.pipeDiameter

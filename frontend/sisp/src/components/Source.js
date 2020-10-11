@@ -17,7 +17,6 @@ class Source extends React.Component {
         let res = await fetch(request.concat(well))
         let data =  await res.json()
         
-        console.log(data)
     }
 
 

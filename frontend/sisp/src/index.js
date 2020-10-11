@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import  './assets/css/bootstrap.css'
 import * as serviceWorker from './serviceWorker';
-import MecstatusDetail from './pages/MecstatusDetail'
+import MecstatusDetail from './Views/Detail/MechanicStatusView'
 
 //Components
 

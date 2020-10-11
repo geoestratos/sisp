@@ -15,7 +15,7 @@ class MecStatusViewset(viewsets.ModelViewSet):
 
 
 class GeoColumnViewset(viewsets.ModelViewSet):
-    queryset = GeoColumn.objects.all().order_by('-mecStatus_id')[:20]
+    queryset = GeoColumn.objects.all().order_by('-mecStatus_id','orderId')
     serializer_class = GeoColumnSerializer
 
     #Filters
@@ -25,5 +25,9 @@ class GeoColumnViewset(viewsets.ModelViewSet):
 
 class TRstateViewset(viewsets.ModelViewSet):
     parser_classes = [JSONParser]
-    queryset = TRstate.objects.all().order_by('-created')
+    queryset = TRstate.objects.all().order_by('-mecStatus_id', 'orderId')
     serializer_class = TRSerializer
+
+    filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
+    ordering_fields= '__all__'
+    filter_fields=('mecStatus', 'programType')
