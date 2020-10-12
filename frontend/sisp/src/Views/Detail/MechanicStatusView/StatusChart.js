@@ -1,15 +1,17 @@
 import React from 'react'
 import {
         Box, 
-        Button, 
         Card, 
         CardHeader, 
-        CardContent, Divider
+        CardContent, 
+        Divider,
+        IconButton
         } from '@material-ui/core'
+
 import PipeChart from '../../../components/PipeChart'
 import GeoChart from '../../../components/GeoChart'
-import {Edit} from '@material-ui/icons'
-import '../../../assets/css/chart.css'
+import StatusForm from './StatusForm'
+
 
 export default class StatusChart extends React.Component{
 
@@ -17,25 +19,25 @@ export default class StatusChart extends React.Component{
 render(){
     return(
         <div>
-           <Card >
+           <Card elevation={3} >
                 <CardHeader action={(
-                        <Button endIcon={<Edit/> } size='small' variant='text'></Button>
+                        <StatusForm/>
                 )}
                 title='Estado Mecanico'
                 />
                 <Divider/>
                 <CardContent>
-                        <Box height={"100%"} width={"90%"} alignContent={"center"}>
+                        <Box height={"100%"} width={"100%"} alignContent={"center"}>
                                 <Box height={400} width={"25%"} display= {"inline-block"}>
                                         <PipeChart className="chart" program="plan"/>
                                 </Box>
-                                <Box height={400} width={"25%"} display= {"inline-block"}>
+                                <Box height={393} width={"25%"} marginLeft={"-3px"} display= {"inline-block"}>
                                         <GeoChart className="chart" program="plan"/>
                                 </Box>
-                                <Box height={400} width={"25%"} display= {"inline-block"}>
+                                <Box height={393} width={"25%"} marginLeft={"-3px"} display= {"inline-block"}>
                                         <GeoChart className="chart" program="real"/>
                                 </Box>
-                                <Box height={400} width={"25%"} display= {"inline-block"}>
+                                <Box height={393} width={"25%"} marginLeft={"-3px"} display= {"inline-block"}>
                                         <PipeChart className="chart" program="real"/>
                                 </Box>
                         </Box>

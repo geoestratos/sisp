@@ -12,6 +12,7 @@ export default class GeoChart extends Component {
             maintainAspectRatio: false,
             responsive: true,
             legend: false,
+            
             scales: {
                 yAxes:[{
                     stacked: true,
@@ -19,10 +20,18 @@ export default class GeoChart extends Component {
                         beginAtZero: true,
                         display: false,
                         min: -4500,
-                    }
+                    },
+                    gridLines: {
+                        drawBorder: false,
+                    },
+                    
                 }],
                 xAxes:[{
                     stacked: true,
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
                 }],
             }
         }

@@ -1,10 +1,10 @@
 import React from 'react'
 
 import {Container, Grid} from '@material-ui/core'
-import Navbar from '../../../components/Navbar'
+//import Navbar from '../../../components/Navbar'
 import Source from '../../../components/Source'
 import StatusChart from './StatusChart'
-import '../../../assets/css/chart.css'
+
 
 
 class MecstatusDetail extends React.Component{
@@ -12,11 +12,11 @@ class MecstatusDetail extends React.Component{
 render(){
     return(
         <div>
-            <Navbar/>
+        
             <Container maxWidth="xl" >
                 <Source well="trstate/"/>
-                <Grid container spacing={3} >
-                    <Grid item xs={12}>
+                <Grid container spacing={3} justify={'center'} alignItems={'center'} >
+                    <Grid item xs={10}  >
                         <StatusChart/>
                     </Grid>
                 </Grid>
