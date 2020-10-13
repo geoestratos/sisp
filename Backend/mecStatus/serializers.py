@@ -1,12 +1,9 @@
 #Django REST Framework
-from django.db.models.expressions import OrderBy
 from rest_framework.fields import SerializerMethodField
-from mecStatus.models import MecStatus
 from rest_framework import serializers
 
 #SISP
 from mecStatus import models
-from SISP.serializers import BaseMecStatusSerializer , BaseModelSerializer
       
 
 class GeoColumnSerializer(serializers.ModelSerializer):

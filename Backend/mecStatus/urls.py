@@ -1,5 +1,4 @@
 #Django
-from os import name
 from django.db import router
 from django.urls import path
 from django.urls.conf import include
@@ -17,6 +16,6 @@ router.register(r'trstate', TRstateViewset)
 
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('mecstatus/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

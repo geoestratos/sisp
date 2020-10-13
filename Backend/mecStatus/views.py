@@ -1,9 +1,8 @@
 #RestFramework
-from re import search
 from rest_framework import viewsets, filters
 from rest_framework.parsers import JSONParser
-
 from django_filters.rest_framework import DjangoFilterBackend
+
 #SISP Utilities
 from .models import MecStatus, GeoColumn, TRstate
 from mecStatus.serializers import   GeoColumnSerializer, TRSerializer, MecStatusSerializer

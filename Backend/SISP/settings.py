@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #SISP Apps
     'clusters',
     'mecStatus',
+    'trajectory',
 
     #Middleware
     'corsheaders'

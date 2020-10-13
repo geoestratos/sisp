@@ -6,11 +6,10 @@ from django.urls.conf import include
 
 #RestFramework
 from rest_framework import routers
-from mecStatus.views import MecStatusViewset
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('mecStatus.urls', 'mecstatus'), namespace='mecstatus')),
-   
+    path('', include(('trajectory.urls', 'trajectory'), namespace='trajectory'))
 ]
