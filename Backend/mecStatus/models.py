@@ -8,19 +8,6 @@ from django.db.models.deletion import CASCADE
 from clusters.models import Well
 from SISP.utils.models import BaseModel, BaseMecStatus
 
-
-
-class MecStatus(BaseModel, models.Model):
-    '''Module from the principal app.'''
-    '''well = models.ForeignKey(Well, on_delete=CASCADE, related_name='mecStatuses')
-
-    def __str__(self):
-        return self.well.name
-'''
-    name = models.CharField('name', max_length=12, default=None)
-    
-    def __str__(self):
-        return self.name
     
 
 class GeoColumn(BaseModel, BaseMecStatus, models.Model):
@@ -43,8 +30,8 @@ class GeoColumn(BaseModel, BaseMecStatus, models.Model):
     ('YAC-2', 'YAC-2'),
     ('YAC-1', 'YAC-1'),
 )
-    mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE, related_name='geoColumns', verbose_name='Geological Columns')
-    layer = models.CharField('GeologicalLayer', max_length=7, choices=LAYERS_CHOICES, default='T.A')
+    well = models.ForeignKey(Well, on_delete=CASCADE, related_name='geoColumns', verbose_name='Pozo')
+    layer = models.CharField('Columna geologica', max_length=7, choices=LAYERS_CHOICES, default='T.A')
     
     def __str__(self):
         return self.layer
@@ -67,10 +54,22 @@ DRILL_CHOICES = (
 class TRstate(BaseModel, BaseMecStatus, models.Model):
     ''' Submodule from Mechanic status, this represent 
     the Pipe lines chart'''
-    mecStatus = models.ForeignKey(MecStatus, on_delete=CASCADE, related_name='trStates', verbose_name='TR Status')
-    pipeDiameter = models.CharField(max_length=7, choices=PIPE_CHOICES, default='20')
-    drillDiameter = models.CharField(max_length=7, choices=DRILL_CHOICES, default='26')
-    isConnection = models.BooleanField('Is Connection', default=False)
+    well = models.ForeignKey(Well, on_delete=CASCADE, related_name='trStatus', verbose_name='Estado mecanico TR')
+    pipeDiameter = models.CharField(
+                'Diametro de tuberia',
+                max_length=7, 
+                choices=PIPE_CHOICES, 
+                default='20', 
+                help_text='External pipe diameter'
+                )
+    drillDiameter = models.CharField(
+                'Diametro de barrena',
+                max_length=7, 
+                choices=DRILL_CHOICES, 
+                default='26', 
+                help_text='Drill diameter'
+                )
+    isConnection = models.BooleanField('Conexion', default=False, help_text='The pipe is a connection?')
 
     def __str__(self):
         return self.pipeDiameter

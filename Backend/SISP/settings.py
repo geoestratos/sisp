@@ -48,7 +48,10 @@ INSTALLED_APPS = [
     'trajectory',
 
     #Middleware
-    'corsheaders'
+    'corsheaders',
+
+    #Utilities
+    'import_export'
 ]
 
 
@@ -94,6 +97,10 @@ DATABASES = {
     'default': {
         'NAME': 'db.sqlite3',
         'ENGINE': 'django.db.backends.sqlite3',
+        'SISP':
+            {
+                'NAME': 'test_db',
+            }
         #'USER': 'randy',
         #'PASSWORD': 'regd9070'
     }

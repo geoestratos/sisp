@@ -7,10 +7,9 @@ from django.urls.conf import include
 from rest_framework import routers
 
 #SISP Utilities
-from mecStatus.views import MecStatusViewset, TRstateViewset, GeoColumnViewset
+from mecStatus.views import TRstateViewset, GeoColumnViewset
 
 router = routers.DefaultRouter()
-router.register(r'mecstatus', MecStatusViewset)
 router.register(r'geocolumn', GeoColumnViewset)
 router.register(r'trstate', TRstateViewset)
 

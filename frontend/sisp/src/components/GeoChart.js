@@ -41,7 +41,7 @@ export default class GeoChart extends Component {
     }
 
     get_APIdata = async () => {
-        let adress = 'http://127.0.0.1:8000/api/geocolumn/?programType='
+        let adress = 'http://127.0.0.1:8000/mecstatus/geocolumn/?programType='
         let rawData =  await(await fetch(adress.concat(this.props.program))).json()
 
         this.get_unpacket_data(rawData)

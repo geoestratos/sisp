@@ -1,10 +1,10 @@
 
 from django.contrib import admin
-from .models import MecStatus, GeoColumn, TRstate
+from .models import GeoColumn, TRstate
 
 # Register your models here.
 
-@admin.register(MecStatus, GeoColumn, TRstate)
+@admin.register(GeoColumn, TRstate)
 
 class MsStatusAdmin(admin.ModelAdmin):
     pass

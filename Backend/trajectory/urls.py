@@ -1,14 +1,14 @@
 #Django
 from django.urls.conf import include
 from rest_framework import routers
-from rest_framework import urlpatterns
 from django.urls import path
 
 #SISP Utilities
-from trajectory.views import TrajectoryDataViewSet
+from trajectory.views import TrajectoryDataViewSet, TrajcetorySummaryViewSet
 
 router = routers.DefaultRouter()
-router.register(r'trajectory', TrajectoryDataViewSet)
+router.register(r'data', TrajectoryDataViewSet)
+router.register(r'summary', TrajcetorySummaryViewSet)
 
 urlpatterns = [
     path('trajectory/', include(router.urls)),

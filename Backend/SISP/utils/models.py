@@ -28,12 +28,19 @@ class BaseModel (models.Model):
 
 class BaseMecStatus (models.Model):
     '''This base models acts as an abstract base class from Mechanic Status submodules'''
-    orderId = models.IntegerField(default=0)
-    startMd = models.FloatField(max_length=10)
-    startTvd = models.FloatField(max_length=10)
-    endMd = models.FloatField(max_length=10)
-    endTvd = models.FloatField(max_length=10)
-    programType = models.CharField('Type of program', max_length=4, choices=(('plan', 'plan'), ('real', 'real')), default='plan')
+    orderId = models.IntegerField('Identificador de orden', default=0, help_text='Specify which is the print order')
+    startMd = models.FloatField('Inicio Md', max_length=10)
+    startTvd = models.FloatField('Inicio Tvd', max_length=10)
+    endMd = models.FloatField('Fin Md', max_length=10)
+    endTvd = models.FloatField('Fin Tvd', max_length=10)
+
+    programType = models.CharField(
+        'Tipo de programa', 
+        max_length=4, 
+        choices=(('plan', 'plan'), ('real', 'real')), 
+        default='plan', 
+        help_text='Determines which program type is'
+        )
 
     class Meta:
         """Meta option"""
