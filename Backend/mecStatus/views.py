@@ -24,3 +24,4 @@ class TRstateViewset(viewsets.ModelViewSet):
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     ordering_fields= '__all__'
     filter_fields=('well', 'programType')
+    
