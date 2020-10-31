@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import MecstatusDetail from './Views/Detail/MechanicStatusView'
-
+import Dashboard from './Views/Dashboard/index'
 //Components
 
 
-ReactDOM.render( <MecstatusDetail></MecstatusDetail> ,document.getElementById('root')
+ReactDOM.render( 
+    <div>
+        <Dashboard/>
+    </div>
+    
+    ,document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
