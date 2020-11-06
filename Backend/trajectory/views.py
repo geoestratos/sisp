@@ -13,5 +13,5 @@ class TrajectoryDataViewSet(viewsets.ModelViewSet):
     serializer_class = TrajectoryDataSerializer
     
 class TrajcetorySummaryViewSet(viewsets.ModelViewSet):
-    queryset = TrajectorySummary.objects.all().order_by('-created')
+    queryset = TrajectorySummary.objects.all().order_by('-created')[:1]
     serializer_class = TrajectorySummarySerializer
