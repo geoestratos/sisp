@@ -1,12 +1,11 @@
 import React from 'react'
-import Plotly from "plotly.js-basic-dist";
-
+import Plotly from "plotly.js-gl3d-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { Box } from '@material-ui/core';
 const Plot = createPlotlyComponent(Plotly);
 
 
-export default class PlantChart extends React.Component{
+export default class GeneralChart extends React.Component{
 
     state = {
 
@@ -22,43 +21,44 @@ export default class PlantChart extends React.Component{
 
         let east = []
         let north = []
+        let tvd = []
 
         for (let items of rawData){
             east.push(items.gridEast)
             north.push(items.gridNorth)
+            tvd.push(-items.tvd)
         }
 
-        console.log(east)
-        console.log(north)
+
         this.setState(
             {
                 east: east,
                 north: north,
+                tvd: tvd,
             }
         )
+        console.log(tvd)
     }
     
     render(){
         return(
-            <Box height={"auto"} width={"auto"} alignContent={"center"} margin={"auto"}>
-                <Plot
+           
+            <Box height={"auto"} width={"100%"} alignContent={"center"} justifyContent={"center"} >
+                <Plot 
                     data={[
                     {
+                        
+                        type: 'scatter3d',
+                        mode: 'lines',
                         x: this.state.north,
                         y: this.state.east,
-                        type: 'scatter',
-                        mode: 'lines',
+                        z: this.state.tvd,
+                        
                     }
                     ]}
                     layout={ { 
                         title: '',
                         autosize: false,
-                        xaxis:{
-                            title: 'Grid North'
-                        },
-                        yaxis:{
-                            title: 'Grid East'
-                        },
                         height:550,
                         margin:{
                             l:0,
@@ -68,15 +68,14 @@ export default class PlantChart extends React.Component{
                             pad:0,
                             
                         },
-
-                    
                     } }
 
                     config= {{
                         responsive: true
                     }}
-                />
-            </Box>
+                />                         
+            </Box> 
+            
         )
     }
 }

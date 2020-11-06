@@ -10,7 +10,6 @@ import {
 
 import PipeChart from '../../../components/PipeChart'
 import GeoChart from '../../../components/GeoChart'
-import StatusForm from './StatusForm'
 
 
 export default class StatusChart extends React.Component{
@@ -20,9 +19,7 @@ render(){
     return(
         <div>
            <Card elevation={3} >
-                <CardHeader action={(
-                        <StatusForm/>
-                )}
+                <CardHeader 
                 title='Estado Mecanico'
                 />
                 <Divider/>
