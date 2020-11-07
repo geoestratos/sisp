@@ -7,12 +7,15 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Dashboard from './Views/Dashboard/index'
 import MecStatusDetail from './Views/Detail/MechanicStatusView/index'
 import TrajectoryDetail from './Views/Detail/TrajectoryView/index'
+import Navbar from './components/Navbar'
 
 //Components
 
 
 ReactDOM.render( 
     <div>
+        <Navbar/>
+        
         <BrowserRouter>
                 <Switch>
                     <Route path="/mechanic-status/" component= {MecStatusDetail} />

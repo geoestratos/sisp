@@ -14,4 +14,4 @@ class TrajectoryDataSerializer(serializers.ModelSerializer):
 class TrajectorySummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.TrajectorySummary
-        fields = '__all__'
+        fields = ['id','trajectoryType', 'dls', 'inclination', 'totalDepth', 'displacement', 'azimut']
