@@ -5,13 +5,13 @@ from rest_framework.parsers import JSONParser
 from django_filters.rest_framework import DjangoFilterBackend
 
 #SISP Utilities
-from trajectory.models import TrajectoryData, TrajectorySummary
-from trajectory.serializers import TrajectoryDataSerializer, TrajectorySummarySerializer
+from trajectory.models import DepthData, Summary
+from trajectory.serializers import DepthDataSerializer, SummarySerializer
 
-class TrajectoryDataViewSet(viewsets.ModelViewSet):
-    queryset = TrajectoryData.objects.all().order_by('-created')
-    serializer_class = TrajectoryDataSerializer
+class DepthDataViewSet(viewsets.ModelViewSet):
+    queryset = DepthData.objects.all().order_by('-created')
+    serializer_class = DepthDataSerializer
     
-class TrajcetorySummaryViewSet(viewsets.ModelViewSet):
-    queryset = TrajectorySummary.objects.all().order_by('-created')[:1]
-    serializer_class = TrajectorySummarySerializer
+class SummaryViewSet(viewsets.ModelViewSet):
+    queryset = Summary.objects.all().order_by('-created')[:1]
+    serializer_class = SummarySerializer

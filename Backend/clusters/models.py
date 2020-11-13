@@ -21,6 +21,9 @@ class Equipment(BaseModel, models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural='Equipos'
+
 ''' Each equipments can contain very wells'''
 class Well(BaseModel, models.Model):
     name = models.CharField('nombre', max_length=40)
@@ -28,3 +31,6 @@ class Well(BaseModel, models.Model):
     
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name_plural='Pozos'

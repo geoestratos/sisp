@@ -45,8 +45,8 @@ render(){
                         </CardContent>
                 </Card>
             </Grid>  
-            <Grid item xs={1}/>
-            <Grid item xs={10}>
+            <Grid item xs={2}/>
+            <Grid item xs={8}>
                 <Card elevation={3} >
                         <CardHeader 
                         title='Resumen'

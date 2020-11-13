@@ -6,12 +6,12 @@ from trajectory import models
 
 
 
-class TrajectoryDataSerializer(serializers.ModelSerializer):
+class DepthDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.TrajectoryData
+        model = models.DepthData
         fields = '__all__'
 
-class TrajectorySummarySerializer(serializers.ModelSerializer):
+class SummarySerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.TrajectorySummary
-        fields = ['id','trajectoryType', 'dls', 'inclination', 'totalDepth', 'displacement', 'azimut']
+        model = models.Summary
+        fields = ['__all__']

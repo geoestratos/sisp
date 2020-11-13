@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'clusters',
     'mecStatus',
     'trajectory',
+    'users',
 
     #Middleware
     'corsheaders',
@@ -131,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-DATETIME_FORMAT = '%d-%m-%Y %H:%M'
+DATETIME_FORMAT = 'd/m/Y h:i A'
 
 TIME_ZONE = 'UTC'
 
@@ -163,3 +164,5 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST  = (
     'http://localhost: 3000' ,
 )
+
+AUTH_USER_MODEL = 'users.User'

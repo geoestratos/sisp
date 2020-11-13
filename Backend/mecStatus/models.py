@@ -36,6 +36,10 @@ class GeoColumn(BaseModel, BaseMecStatus, models.Model):
     def __str__(self):
         return self.layer
 
+    class Meta:
+        verbose_name='Columna geologica'
+        verbose_name_plural='Columnas geologicas'
+
 PIPE_CHOICES = (
     ('20', '20'),
     ('13 3/8', '13 3/8'),
@@ -55,6 +59,10 @@ class TRstate(BaseModel, BaseMecStatus, models.Model):
     ''' Submodule from Mechanic status, this represent 
     the Pipe lines chart'''
     well = models.ForeignKey(Well, on_delete=CASCADE, related_name='trStatus', verbose_name='Estado mecanico TR')
+    startMd = models.FloatField('Inicio Md', max_length=10)
+    startTvd = models.FloatField('Inicio Tvd', max_length=10)
+    endMd = models.FloatField('Fin Md', max_length=10)
+    endTvd = models.FloatField('Fin Tvd', max_length=10)
     pipeDiameter = models.CharField(
                 'Diametro de tuberia',
                 max_length=7, 
@@ -73,3 +81,7 @@ class TRstate(BaseModel, BaseMecStatus, models.Model):
 
     def __str__(self):
         return self.pipeDiameter
+    
+    class Meta:
+        verbose_name='Estado mecanico'
+        verbose_name_plural='Estados mecanicos'

@@ -2,7 +2,6 @@
 from django.db import models
 
 
-
 class BaseModel (models.Model):
     ''' Base models acts as an abstract base class from wich every other models in the project. 
     This class provide the following attributes
@@ -26,14 +25,14 @@ class BaseModel (models.Model):
         get_latest_by= 'created'
         ordering= ['-created', 'modified']
 
+
 class BaseMecStatus (models.Model):
     '''This base models acts as an abstract base class from Mechanic Status submodules'''
-    orderId = models.IntegerField('Identificador de orden', default=0, help_text='Specify which is the print order')
-    startMd = models.FloatField('Inicio Md', max_length=10)
-    startTvd = models.FloatField('Inicio Tvd', max_length=10)
-    endMd = models.FloatField('Fin Md', max_length=10)
-    endTvd = models.FloatField('Fin Tvd', max_length=10)
-
+    orderId = models.IntegerField(
+        'Identificador de orden', 
+        default=0, 
+        help_text='Specify which is the print order'
+        )
     programType = models.CharField(
         'Tipo de programa', 
         max_length=4, 

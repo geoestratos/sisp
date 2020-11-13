@@ -1,21 +1,20 @@
 #Django
 from django.contrib import admin
 #SISP
-from trajectory.models import TrajectoryData, TrajectorySummary
+from .models import  DepthData, Summary
 #Utilities
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-class TrajectoryDataResources(resources.ModelResource):
+class  DepthDataResources(resources.ModelResource):
     class Meta:
-        model = TrajectoryData
+        model = DepthData
 
-
-@admin.register(TrajectoryData)
-class TrajetoryDataAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
+@admin.register(DepthData)
+class DepthDataAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
     list_display = ('well', 'md', 'tvd',)
-    resource_class = TrajectoryDataResources
+    resource_class =  DepthDataResources
 
-@admin.register(TrajectorySummary)
-class TrajectorySummaryAdmin(admin.ModelAdmin):
+@admin.register(Summary)
+class SummaryAdmin(admin.ModelAdmin):
     pass
