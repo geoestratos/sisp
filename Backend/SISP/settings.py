@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    #Admin
+    'jet',
+
+    #Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +57,9 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #Utilities
-    'import_export'
+    'import_export',
+
+
 ]
 
 
@@ -75,7 +82,7 @@ ROOT_URLCONF = 'SISP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -166,3 +173,5 @@ CORS_ORIGIN_WHITELIST  = (
 )
 
 AUTH_USER_MODEL = 'users.User'
+
+

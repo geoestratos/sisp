@@ -6,4 +6,4 @@ django-cors-headers==3.5.0
 django-filter==2.4.0
 django-import-export
 djangorestframework-jwt 
-django-3-jet
+dajngo-je 1.0.8
