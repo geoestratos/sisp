@@ -5,19 +5,36 @@ from django.db.models.deletion import CASCADE
 from SISP.utils.models import BaseModel
 from clusters.models import Well
 
-class TrajectorySummary(BaseModel, models.Model):
+class Summary(BaseModel, models.Model):
     well =  models.ForeignKey(Well, on_delete=CASCADE, related_name="trajectory_summary", verbose_name="Pozo")
-    trajectoryType =  models.CharField('TypeOfTrajectory', max_length=20)
-    dls = models.FloatField('DLS', max_length=10)
-    inclination = models.FloatField('inclinacion', max_length=20)
-    totalDepth = models.FloatField('profundidad total', max_length=20)
-    displacement = models.FloatField('desplazamiento', max_length=20)
-    azimut = models.FloatField('azimut', max_length=20)
+    trajectoryType =  models.CharField(
+                    'Tipo de trayectoria', 
+                    choices=(
+                            ('Vertical', 'Vertical'), 
+                            ('J', 'J'),
+                            ('S', 'S'),
+                            ('Horizontal', 'Horizontal'),
+                            ), 
+                    default='Vertical', 
+                    help_text='Determines which trajectory type is',
+                    max_length=10,        
+                    )
+    actualDepth = models.FloatField('Profundidad actual', max_length=20)
+    finalDepth = models.FloatField('Profundidad final', max_length=20)
+    actualVDepth = models.FloatField('Profundidad actual', max_length=20)
+    finalVDepth = models.FloatField('Profundidad final', max_length=20)
+    actualInclination = models.FloatField('Inclinacion actual', max_length=20)
+    maxInclination = models.FloatField('Inclinacion maxima', max_length=20)
+    displacement = models.FloatField('Desplazamiento', max_length=20)
+    azimut = models.FloatField('Azimut', max_length=20)
 
     def __str__(self):
         return self.well.name
 
-class TrajectoryData(BaseModel, models.Model):
+    class Meta:
+        verbose_name_plural='Tablas de resumen'
+
+class DepthData(BaseModel, models.Model):
     well = models.ForeignKey(Well, on_delete=CASCADE, related_name="trajectory_data", verbose_name="Pozo")
     tvd = models.FloatField(max_length=10)
     md = models.FloatField(max_length=10)
@@ -26,3 +43,6 @@ class TrajectoryData(BaseModel, models.Model):
 
     def __str__(self):
         return self.well.name
+
+    class Meta:
+        verbose_name_plural='Datos de profundidad'

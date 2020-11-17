@@ -10,6 +10,8 @@ class GeoColumnSerializer(serializers.ModelSerializer):
         class Meta:
                 model = models.GeoColumn
                 fields = '__all__'
+        
+
 
 class TRSerializer (serializers.ModelSerializer):
         class Meta:

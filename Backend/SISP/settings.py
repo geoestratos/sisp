@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    #Admin
+    'jet',
+
+    #Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,12 +51,15 @@ INSTALLED_APPS = [
     'clusters',
     'mecStatus',
     'trajectory',
+    'users',
 
     #Middleware
     'corsheaders',
 
     #Utilities
-    'import_export'
+    'import_export',
+
+
 ]
 
 
@@ -74,7 +82,7 @@ ROOT_URLCONF = 'SISP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-DATETIME_FORMAT = '%d-%m-%Y %H:%M'
+DATETIME_FORMAT = 'd/m/Y h:i A'
 
 TIME_ZONE = 'UTC'
 
@@ -150,13 +158,7 @@ STATIC_URL = '/static/'
 #Django rest framework configuration
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    ),
-    'DEFAULT_PERMISSIONS_CLASSES': (
-        'rest_framework.permissions.DjangoModel',
-    ),
-
+    
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
     ),
@@ -165,3 +167,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'mecStatus.core.pagination.DataOnly',
     'PAGE_SIZE':6000
 }
+
+CORS_ORIGIN_WHITELIST  = (
+    'http://localhost: 3000' ,
+)
+
+AUTH_USER_MODEL = 'users.User'
+
+

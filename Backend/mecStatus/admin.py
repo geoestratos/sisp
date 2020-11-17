@@ -1,10 +1,32 @@
-
+#Django
 from django.contrib import admin
+
+#SISP
 from .models import GeoColumn, TRstate
+ 
+#Utilities
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
-# Register your models here.
 
-@admin.register(GeoColumn, TRstate)
+class GeoColumnResources(resources.ModelResource):
+    class Meta:
+        model = GeoColumn
 
-class MsStatusAdmin(admin.ModelAdmin):
-    pass
+@admin.register(GeoColumn)
+class GeoColumnAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = GeoColumnResources
+    fields = [
+        'orderId',
+        'startMd',
+        'endMd',
+        
+    ]
+
+class TRstateResources(resources.ModelResource):
+    class Meta:
+        model = TRstate
+
+@admin.register(TRstate)
+class TRstateAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = TRstateResources
