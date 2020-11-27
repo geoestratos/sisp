@@ -1,0 +1,42 @@
+@import '../custom.scss';
+
+.notfound__container {
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 15px;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+
+}
+.notfound__container-logo {
+    justify-content: center;
+    display: flex;
+    height: 150px;
+    width: 20%;
+}
+
+.notfound__container-logo img {
+    height: 100%;
+}
+
+.notfound__container-text {
+    color: #333333;
+    margin: 25vh auto;
+}
+
+.notfound__container-text h1{
+    font-size: 70px;
+}
+
+.notfound__container-text h2 {
+    font-size: 40px;
+}
